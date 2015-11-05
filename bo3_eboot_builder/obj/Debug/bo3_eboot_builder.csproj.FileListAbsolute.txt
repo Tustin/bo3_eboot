@@ -16,3 +16,4 @@ C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops I
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops III EBOOT Builder.pdb
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.exe
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.pdb
+C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.Forms.About.resources
