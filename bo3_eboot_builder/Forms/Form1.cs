@@ -59,19 +59,14 @@ namespace bo3_eboot_builder
         private void Builder_Load(object sender, EventArgs e)
         {
             //do some checking
-            if (!Directory.Exists("tools"))
+            if (!File.Exists("make_fself.exe") || !File.Exists("make_fself_npdrm.exe"))
             {
-                MessageBox.Show("\"tools\" folder is missing.\nPlease re-download the program and extract ALL files/folders!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Missing files required for compiling.\nPlease re-download the program and extract ALL files/folders!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Application.Exit();
             }
-            else if (!File.Exists("tools/make_fself.exe") || !File.Exists("tools/make_fself_npdrm.exe"))
+            else if (!File.Exists("ingame_loader.exe"))
             {
-                MessageBox.Show("Missing files in \"tools\" folder.\nPlease re-download the program and extract ALL files/folders!", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Application.Exit();
-            }
-            else if (!File.Exists("tools/ingame_loader.exe"))
-            {
-                MessageBox.Show("Missing \"ingame_loader.exe\" from \"tools\" folder.\nYou may proceed but won't be able to load SPRX files!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Missing \"ingame_loader.exe\" file.\nYou may proceed but won't be able to load SPRX files!", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 can_use_sprx = false;
             }
 
@@ -185,7 +180,7 @@ namespace bo3_eboot_builder
             Task.Factory.StartNew(() => build(Build.npeb_debug_npdrm));
         }
 
-        private void about_Click(object sender, EventArgs e)
+        private void about_Click(object sender, EventArgs e)                                  
         {
             About a = new About();
             a.Show();

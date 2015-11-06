@@ -38,117 +38,122 @@ namespace bo3_eboot_builder.Classes
         }
         public static string compile(byte[] buffer, Builder.Mods mod_buffer, Builder.Build type)
         {
+            if (File.Exists("EBOOT-DEX.BIN.bak"))
+                File.Delete("EBOOT-DEX.BIN.bak");
+
+            if (File.Exists("EBOOT-CEX.BIN.bak"))
+                File.Delete("EBOOT-CEX.BIN.bak");
+
+            if (File.Exists("EBOOT-DEX.BIN"))
+                File.Move("EBOOT-DEX.BIN", "EBOOT-DEX.BIN.bak");
+
+            if (File.Exists("EBOOT-CEX.BIN"))
+                File.Move("EBOOT-CEX.BIN", "EBOOT-CEX.BIN.bak");
+
             bool using_sprx = false;
             string compress_eboot = Settings.Default.compress ? "-c " : "";
-            string out_file = null;
-            switch(type)
+            string out_file = "EBOOT.ELF";
+            switch (type)
             {
                 case Builder.Build.npeb_cex:
                     out_file = "EBOOT-CEX.ELF";
-                break;
+                    break;
 
                 default:
                     out_file = "EBOOT-DEX.ELF";
-                break;
+                    break;
             }
-            try
+            if (mod_buffer.steady_aim != null)
+                buffer = write_bytes(buffer, Constants.steady_aim, (uint)mod_buffer.steady_aim);
+
+            if (mod_buffer.no_recoil != null)
+                buffer = write_bytes(buffer, Constants.no_recoil, (uint)mod_buffer.no_recoil);
+
+            if (mod_buffer.wallhack != null)
+                buffer = write_bytes(buffer, Constants.chams, (uint)mod_buffer.wallhack);
+
+            if (mod_buffer.vsat != null)
             {
-                if (mod_buffer.steady_aim != null)
-                    buffer = write_bytes(buffer, Constants.steady_aim, (uint)mod_buffer.steady_aim);
+                buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
+                buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
+            }
 
-                if (mod_buffer.no_recoil != null)
-                    buffer = write_bytes(buffer, Constants.no_recoil, (uint)mod_buffer.no_recoil);
+            if (mod_buffer.fps != null)
+                buffer = write_bytes(buffer, Constants.fps, (uint)mod_buffer.fps);
 
-                if (mod_buffer.wallhack != null)
-                   buffer = write_bytes(buffer, Constants.chams, (uint)mod_buffer.wallhack);
+            if (mod_buffer.weapons_flag != null)
+                buffer = write_bytes(buffer, Constants.weapons_flag, (uint)mod_buffer.weapons_flag);
 
-                if (mod_buffer.vsat != null)
-                {
-                    buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
-                    buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
-                }
+            if (mod_buffer.dead_bodies_flag != null)
+                buffer = write_bytes(buffer, Constants.dead_bodies_flag, (uint)mod_buffer.dead_bodies_flag);
 
-                if (mod_buffer.fps != null)
-                    buffer = write_bytes(buffer, Constants.fps, (uint)mod_buffer.fps);
-
-                if (mod_buffer.weapons_flag != null)
-                    buffer = write_bytes(buffer, Constants.weapons_flag, (uint)mod_buffer.weapons_flag);
-
-                if (mod_buffer.dead_bodies_flag != null)
-                    buffer = write_bytes(buffer, Constants.dead_bodies_flag, (uint)mod_buffer.dead_bodies_flag);
-
-                File.WriteAllBytes(out_file, buffer);
+            File.WriteAllBytes(out_file, buffer);
 
 
-                if (!string.IsNullOrEmpty(mod_buffer.load_sprx))
-                {
-                    if (mod_buffer.load_sprx.IndexOf(".sprx") == -1)
-                        mod_buffer.load_sprx += ".sprx";
+            if (!string.IsNullOrEmpty(mod_buffer.load_sprx))
+            {
+                if (mod_buffer.load_sprx.IndexOf(".sprx") == -1)
+                    mod_buffer.load_sprx += ".sprx";
 
-                    Process sprx = new Process();
-                    using_sprx = true;
-                    sprx.StartInfo.FileName = "tools/ingame_loader.exe";
-                    sprx.StartInfo.Arguments = AppDomain.CurrentDomain.BaseDirectory + out_file + " /dev_hdd0/tmp/" + mod_buffer.load_sprx + " " + AppDomain.CurrentDomain.BaseDirectory + "EBOOT-SPRX.ELF";
-                    sprx.StartInfo.CreateNoWindow = true;
-                    sprx.StartInfo.UseShellExecute = false;
-                    sprx.Start();
-
-                    //we want to wait so it doesn't proceed with an unfinished file.
-                    sprx.WaitForExit();
-                }
-                Process compile = new Process();
-
-                if (using_sprx)
-                    out_file = "EBOOT-SPRX.ELF";
-
-                switch (type)
-                {
-                    case Builder.Build.npeb_cex:
-                        //todo
-                    break;
-
-                    case Builder.Build.npeb_debug:
-                    compile.StartInfo.FileName = "tools/make_fself.exe";
-                    compile.StartInfo.Arguments = compress_eboot + AppDomain.CurrentDomain.BaseDirectory + out_file + " " + AppDomain.CurrentDomain.BaseDirectory +"EBOOT-DEX.BIN";
-                    compile.StartInfo.CreateNoWindow = true;
-                    compile.StartInfo.UseShellExecute = false;
-                    compile.Start();
-                    break;
-
-                    case Builder.Build.npeb_debug_npdrm:
-                    compile.StartInfo.FileName = "tools/make_fself_npdrm.exe";
-                    compile.StartInfo.Arguments = compress_eboot + AppDomain.CurrentDomain.BaseDirectory + out_file + " " + AppDomain.CurrentDomain.BaseDirectory + "EBOOT-DEX.BIN";
-                    compile.StartInfo.UseShellExecute = false;
-                    compile.StartInfo.CreateNoWindow = true;
-                    compile.Start();
-                    break;
-                }
+                Process sprx = new Process();
+                using_sprx = true;
+                sprx.StartInfo.FileName = "ingame_loader.exe";
+                sprx.StartInfo.Arguments = out_file + " /dev_hdd0/tmp/" + mod_buffer.load_sprx + " EBOOT-SPRX.ELF";
+                sprx.StartInfo.CreateNoWindow = true;
+                sprx.StartInfo.UseShellExecute = false;
+                sprx.Start();
 
                 //we want to wait so it doesn't proceed with an unfinished file.
-                compile.WaitForExit();
-
-                //clean up after ourselves
-                if (File.Exists("EBOOT-DEX.BIN") || File.Exists("EBOOT-CEX.BIN"))
-                {
-                    if (File.Exists("EBOOT-SPRX.ELF"))
-                        File.Delete("EBOOT-SPRX.ELF");
-
-                    if (File.Exists("EBOOT-CEX.ELF"))
-                        File.Delete("EBOOT-CEX.ELF");
-
-                    if (File.Exists("EBOOT-DEX.ELF"))
-                        File.Delete("EBOOT-DEX.ELF");
-
-                    return "good";
-                }
-
-               return "noeboot";
+                sprx.WaitForExit();
             }
-            catch (Exception ex)
+            
+            Process compile = new Process();
+
+            if (using_sprx)
+                out_file = "EBOOT-SPRX.ELF";
+
+            switch (type)
             {
-                //supply a very helpful error message
-                return "An error as occurred.";
+                case Builder.Build.npeb_cex:
+                    //todo
+                    break;
+
+                case Builder.Build.npeb_debug:
+                    compile.StartInfo.FileName = "make_fself.exe";
+                    compile.StartInfo.Arguments = compress_eboot + out_file + " EBOOT-DEX.BIN";
+                    compile.StartInfo.CreateNoWindow = true;
+                    compile.StartInfo.UseShellExecute = false;
+                    compile.Start();
+                    break;
+
+                case Builder.Build.npeb_debug_npdrm:
+                    compile.StartInfo.FileName = "make_fself_npdrm.exe";
+                    compile.StartInfo.Arguments = compress_eboot + out_file + " EBOOT-DEX.BIN";
+                    compile.StartInfo.UseShellExecute = false;
+                    compile.StartInfo.CreateNoWindow = true;
+                    compile.Start();
+                    break;
             }
+
+            //we want to wait so it doesn't proceed with an unfinished file.
+            compile.WaitForExit();
+
+            //clean up after ourselves
+            if (File.Exists("EBOOT-DEX.BIN") || File.Exists("EBOOT-CEX.BIN"))
+            {
+                if (File.Exists("EBOOT-SPRX.ELF"))
+                    File.Delete("EBOOT-SPRX.ELF");
+
+                if (File.Exists("EBOOT-CEX.ELF"))
+                    File.Delete("EBOOT-CEX.ELF");
+
+                if (File.Exists("EBOOT-DEX.ELF"))
+                    File.Delete("EBOOT-DEX.ELF");
+
+                return "good";
+            }
+
+            return "noeboot";
         }
     }
 }
