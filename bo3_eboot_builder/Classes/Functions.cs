@@ -74,8 +74,8 @@ namespace bo3_eboot_builder.Classes
 
             if (mod_buffer.vsat != null)
             {
-                buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
-                buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.wallhack);
+                buffer = write_bytes(buffer, Constants.vsat_1, (uint)mod_buffer.vsat);
+                buffer = write_bytes(buffer, Constants.vsat_2, (uint)mod_buffer.vsat);
             }
 
             if (mod_buffer.fps != null)
