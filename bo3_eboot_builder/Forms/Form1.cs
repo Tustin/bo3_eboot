@@ -28,6 +28,7 @@ namespace bo3_eboot_builder
             public uint? fps { get; set; }
             public uint? weapons_flag { get; set; }
             public uint? dead_bodies_flag { get; set; }
+            public uint no_blur = 0x38A00000;
             public string load_sprx { get; set; }
         }
 
@@ -135,6 +136,7 @@ namespace bo3_eboot_builder
 
             if (deadBodiesFlag.Checked)
                 mods.dead_bodies_flag = 0x38C0FFFF;
+
 
             switch (Functions.compile(eboot_buffer, mods, Build.npeb_debug))
             {

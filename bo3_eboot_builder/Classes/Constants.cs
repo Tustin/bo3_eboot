@@ -22,7 +22,8 @@ namespace bo3_eboot_builder.Classes
         public const uint chams = 0x104008;
         public const uint fps = 0xBB84C;
         public const uint weapons_flag = 0x7DC88;
-        public const uint dead_bodies_flag = 0x105308; 
+        public const uint dead_bodies_flag = 0x105308;
+        public const uint no_blur = 0x3E741C;
 
 
         //probably only need one of these but i forget which one it is

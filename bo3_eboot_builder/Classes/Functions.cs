@@ -87,6 +87,9 @@ namespace bo3_eboot_builder.Classes
             if (mod_buffer.dead_bodies_flag != null)
                 buffer = write_bytes(buffer, Constants.dead_bodies_flag, (uint)mod_buffer.dead_bodies_flag);
 
+            //just patch the blur anyways because it's annoying
+            buffer = write_bytes(buffer, Constants.no_blur, mod_buffer.no_blur);
+
             File.WriteAllBytes(out_file, buffer);
 
 
