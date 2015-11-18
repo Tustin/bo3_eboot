@@ -17,3 +17,13 @@ C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops I
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.exe
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.pdb
 C:\Users\Josh\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.Forms.About.resources
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops III EBOOT Builder.exe.config
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops III EBOOT Builder.exe
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\bin\Debug\Black Ops III EBOOT Builder.pdb
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.csprojResolveAssemblyReference.cache
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.Forms.About.resources
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.Builder.resources
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.Properties.Resources.resources
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\bo3_eboot_builder.csproj.GenerateResource.Cache
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.exe
+C:\Users\Luis\Documents\GitHub\bo3_eboot\bo3_eboot_builder\obj\Debug\Black Ops III EBOOT Builder.pdb
