@@ -52,6 +52,7 @@ namespace bo3_eboot_builder
             fpsCheckbox.Enabled = toggle;
             deadBodiesFlag.Enabled = toggle;
             weaponsFlag.Enabled = toggle;
+            redBoxes.Enabled = toggle;
         }
         public Builder()
         {

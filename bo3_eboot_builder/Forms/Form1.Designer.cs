@@ -270,6 +270,7 @@
             // redBoxes
             // 
             this.redBoxes.AutoSize = true;
+            this.redBoxes.Enabled = false;
             this.redBoxes.Location = new System.Drawing.Point(118, 83);
             this.redBoxes.Name = "redBoxes";
             this.redBoxes.Size = new System.Drawing.Size(78, 17);
