@@ -38,6 +38,8 @@ namespace bo3_eboot_builder.Classes
         public const uint weapons_flag = 0x7D888;
         public const uint dead_bodies_flag = 0x104F40;
         public const uint no_blur = 0x3EA75C;
+        public const uint redboxes_1 = 0x572A68;
+        public const uint redboxes_2 = 0x572AA0;
 
         //probably only need one of these but i forget which one it is
         public const uint vsat_1 = 0xB7808;

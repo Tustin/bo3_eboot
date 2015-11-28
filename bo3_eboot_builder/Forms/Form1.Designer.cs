@@ -49,8 +49,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.fpsCheckbox = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.weaponsFlag = new System.Windows.Forms.CheckBox();
             this.deadBodiesFlag = new System.Windows.Forms.CheckBox();
+            this.weaponsFlag = new System.Windows.Forms.CheckBox();
+            this.redBoxes = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.statusbar.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -81,7 +82,7 @@
             // loadELF
             // 
             this.loadELF.Name = "loadELF";
-            this.loadELF.Size = new System.Drawing.Size(152, 22);
+            this.loadELF.Size = new System.Drawing.Size(124, 22);
             this.loadELF.Text = "Load .ELF";
             this.loadELF.Click += new System.EventHandler(this.loadELF_Click);
             // 
@@ -92,7 +93,7 @@
             this.buildDebugNPDRM});
             this.buildToolStripMenuItem.Enabled = false;
             this.buildToolStripMenuItem.Name = "buildToolStripMenuItem";
-            this.buildToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buildToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.buildToolStripMenuItem.Text = "Build";
             // 
             // buildDebug
@@ -244,17 +245,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Render Flags";
             // 
-            // weaponsFlag
-            // 
-            this.weaponsFlag.AutoSize = true;
-            this.weaponsFlag.Enabled = false;
-            this.weaponsFlag.Location = new System.Drawing.Point(6, 40);
-            this.weaponsFlag.Name = "weaponsFlag";
-            this.weaponsFlag.Size = new System.Drawing.Size(72, 17);
-            this.weaponsFlag.TabIndex = 5;
-            this.weaponsFlag.Text = "Weapons";
-            this.weaponsFlag.UseVisualStyleBackColor = true;
-            // 
             // deadBodiesFlag
             // 
             this.deadBodiesFlag.AutoSize = true;
@@ -266,11 +256,33 @@
             this.deadBodiesFlag.Text = "Dead Bodies";
             this.deadBodiesFlag.UseVisualStyleBackColor = true;
             // 
+            // weaponsFlag
+            // 
+            this.weaponsFlag.AutoSize = true;
+            this.weaponsFlag.Enabled = false;
+            this.weaponsFlag.Location = new System.Drawing.Point(6, 40);
+            this.weaponsFlag.Name = "weaponsFlag";
+            this.weaponsFlag.Size = new System.Drawing.Size(72, 17);
+            this.weaponsFlag.TabIndex = 5;
+            this.weaponsFlag.Text = "Weapons";
+            this.weaponsFlag.UseVisualStyleBackColor = true;
+            // 
+            // redBoxes
+            // 
+            this.redBoxes.AutoSize = true;
+            this.redBoxes.Location = new System.Drawing.Point(118, 83);
+            this.redBoxes.Name = "redBoxes";
+            this.redBoxes.Size = new System.Drawing.Size(78, 17);
+            this.redBoxes.TabIndex = 10;
+            this.redBoxes.Text = "Red Boxes";
+            this.redBoxes.UseVisualStyleBackColor = true;
+            // 
             // Builder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(408, 141);
+            this.Controls.Add(this.redBoxes);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.fpsCheckbox);
             this.Controls.Add(this.label1);
@@ -324,6 +336,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox deadBodiesFlag;
         private System.Windows.Forms.CheckBox weaponsFlag;
+        private System.Windows.Forms.CheckBox redBoxes;
     }
 }
 
