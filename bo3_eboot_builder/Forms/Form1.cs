@@ -116,7 +116,7 @@ namespace bo3_eboot_builder
             Mods mods = new Mods();
 
             if (wallhack.Checked)
-                mods.wallhack = 0x38C0FFFF;
+                mods.wallhack = 0x38E0FFFF;
 
             if (steadyAim.Checked)
                 mods.steady_aim = 0x2C040000;
@@ -134,10 +134,10 @@ namespace bo3_eboot_builder
                 mods.fps = 0x60000000;
 
             if (weaponsFlag.Checked)
-                mods.weapons_flag = 0x38C0FFFF;
+                mods.weapons_flag = 0x38E0FFFF;
 
             if (deadBodiesFlag.Checked)
-                mods.dead_bodies_flag = 0x38C0FFFF;
+                mods.dead_bodies_flag = 0x38A0FFFF;
 
             if (redBoxes.Checked)
                 mods.red_boxes = 0x60000000;
