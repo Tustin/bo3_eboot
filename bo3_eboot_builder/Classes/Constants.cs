@@ -24,26 +24,41 @@ namespace bo3_eboot_builder.Classes
         public const uint weapons_flag_102 = 0x7DC88;
         public const uint dead_bodies_flag_102 = 0x105308;
         public const uint no_blur_102 = 0x3E741C;
-		
-		//probably only need one of these but i forget which one it is
-        public const uint vsat_1_102 = 0xB7C38;
-        public const uint vsat_2_102 = 0xB7C54; 
-
-		
-		//1.03
-        public const uint no_recoil = 0x17E1D0;
-        public const uint steady_aim = 0x74DF4C;
-        public const uint chams = 0x103C40;
-        public const uint fps = 0xBB41C;
-        public const uint weapons_flag = 0x7D888;
-        public const uint dead_bodies_flag = 0x104F40;
-        public const uint no_blur = 0x3EA75C;
-        public const uint redboxes_1 = 0x572A68;
-        public const uint redboxes_2 = 0x572AA0;
 
         //probably only need one of these but i forget which one it is
-        public const uint vsat_1 = 0xB7808;
-        public const uint vsat_2 = 0xB7824; 
+        public const uint vsat_1_102 = 0xB7C38;
+        public const uint vsat_2_102 = 0xB7C54;
 
+
+        //1.03
+        public const uint no_recoil_103 = 0x17E1D0;
+        public const uint steady_aim_103 = 0x74DF4C;
+        public const uint chams_103 = 0x103C40;
+        public const uint fps_103 = 0xBB41C;
+        public const uint weapons_flag_103 = 0x7D888;
+        public const uint dead_bodies_flag_103 = 0x104F40;
+        public const uint no_blur_103 = 0x3EA75C;
+        public const uint redboxes_1_103 = 0x572A68;
+        public const uint redboxes_2_103 = 0x572AA0;
+
+        //probably only need one of these but i forget which one it is
+        public const uint vsat_1_103 = 0xB7808;
+        public const uint vsat_2_103 = 0xB7824;
+
+
+        //1.04
+        public const uint no_recoil = 0x17EDB0;
+        public const uint steady_aim = 0x757CF4;
+        public const uint chams = 0x1047F4;
+        public const uint fps = 0xBB6CC;
+        public const uint weapons_flag = 0x7DBDC;
+        public const uint dead_bodies_flag = 0x105AF0;
+        public const uint no_blur = 0x3EBAAC;
+        public const uint redboxes_1 = 0x579120;
+        public const uint redboxes_2 = 0x579158;
+
+        //probably only need one of these but i forget which one it is
+        public const uint vsat_1 = 0xB7AB8;
+        public const uint vsat_2 = 0xB7AD4;
     }
 }
